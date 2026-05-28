@@ -67,33 +67,4 @@ python main.py history 1              # price history for product ID 1
 python main.py remove 1               # remove product ID 1
 ```
 
-## Which files to upload to GitHub
 
-Drag and drop these **files and folders** into your GitHub repository:
-
-| File | Purpose |
-|------|---------|
-| `main.py` | CLI entry point + scheduler |
-| `scraper.py` | Web scraping with requests + BeautifulSoup |
-| `database.py` | SQLite database operations |
-| `email_alert.py` | Gmail SMTP email alerts |
-| `config.py` | Environment variable loader |
-| `requirements.txt` | Python dependencies |
-| `render.yaml` | Render.com deployment config |
-| `.gitignore` | Ignores `*.db`, `.env`, `__pycache__` |
-| `.env.example` | Credential template (safe to share) |
-| `README.md` | This file |
-
-**Do NOT upload** `.env` (contains secrets) or `*.db` files — they're already in `.gitignore`.
-
-## Deploy to Render.com
-
-1. Push to GitHub
-2. In Render.com dashboard → **New +** → **Background Worker**
-3. Connect your repository
-4. Set **Build Command**: `pip install -r requirements.txt`
-5. Set **Start Command**: `python main.py serve`
-6. Add environment variables: `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `ALERT_RECIPIENT`
-7. Deploy
-
-The worker will run 24/7 and check prices every 6 hours.
