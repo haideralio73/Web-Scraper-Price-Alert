@@ -1,0 +1,13 @@
+services:
+  - type: worker
+    name: price-tracker
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py serve
+    envVars:
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: ALERT_RECIPIENT
+        sync: false
